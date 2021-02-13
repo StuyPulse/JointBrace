@@ -1,3 +1,5 @@
+//TODO: Add comments! Ask engineering about physical parts!
+
 int getTargetTemp() {
   printf("getting target temp");
   return 70;

@@ -1,5 +1,16 @@
 //TODO: Add comments! Ask engineering about physical parts!
 
+int sensorPin = -1;
+int heatingPin = -1;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(heatingPin, OUTPUT);
+  pinMode(sensorPin, INPUT);
+  
+}
+
+
 int getTargetTemp() {
   printf("getting target temp");
   return 70;
@@ -27,6 +38,11 @@ int getTemperature() {
 
 void setTemperatureSwitch(bool value) {
   printf("setting temp");
+  if (value) {
+    analogWrite(heatingPin, 255);
+    } else{
+      analogWrite(heatingPin, 0);
+      } 
 }
 
 void controlTemperature() {
@@ -37,8 +53,7 @@ void controlTemperature() {
   }
 }
 
-void setup() {
-}
+
 
 void loop() {
   controlTemperature();

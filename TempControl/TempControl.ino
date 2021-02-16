@@ -1,19 +1,30 @@
-//TODO: Add comments! Ask engineering about physical parts!
+#include <SoftwareSerial.h>
+
+SoftwareSerial hc06(-1,-1);
 
 int sensorPin = -1;
 int heatingPin = -1;
+int targetTemp = 70;
 
 void setup() {
   Serial.begin(9600);
   pinMode(heatingPin, OUTPUT);
   pinMode(sensorPin, INPUT);
-  
+   
+  hc06.begin(9600);
 }
 
-
+void setTargetTemp() {
+  if (hc06.available()){
+    targetTemp = hc06.read()-'0';
+    targetTemp *= 10;
+    targetTemp += hc06.read()-'0';
+    
+  }
+}
 int getTargetTemp() {
   printf("getting target temp");
-  return 70;
+  return targetTemp;
 }
 
 int getTemperature() {

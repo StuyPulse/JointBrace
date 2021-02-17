@@ -16,9 +16,8 @@ void setup() {
 
 void setTargetTemp() {
   if (hc06.available()){
-    targetTemp = hc06.read()-'0';
-    targetTemp *= 10;
-    targetTemp += hc06.read()-'0';
+    targetTemp = hc06.read();
+   
     
   }
 }

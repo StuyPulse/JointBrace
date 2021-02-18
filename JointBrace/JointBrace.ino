@@ -11,14 +11,12 @@ void setup() {
   pinMode(heatingPin, OUTPUT);
   pinMode(sensorPin, INPUT);
    
-  hc06.begin(9600);
+  hc06.begin(9600);  //hc06 is the bluetooth module we use, 9600 is bytes sent
 }
 
 void setTargetTemp() {
   if (hc06.available()){
     targetTemp = hc06.read();
-   
-    
   }
 }
 int getTargetTemp() {
@@ -49,9 +47,9 @@ int getTemperature() {
 void setTemperatureSwitch(bool value) {
   printf("setting temp");
   if (value) {
-    analogWrite(heatingPin, 255);
+    analogWrite(heatingPin, 255); //turns heat on full power
     } else{
-      analogWrite(heatingPin, 0);
+      analogWrite(heatingPin, 0); //turns it off
       } 
 }
 
@@ -63,9 +61,7 @@ void controlTemperature() {
   }
 }
 
-
-
 void loop() {
   controlTemperature();
-  delay(5000);
+  delay(5000);//delays speed temperature changes
 }

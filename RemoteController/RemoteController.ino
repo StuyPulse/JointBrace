@@ -33,13 +33,14 @@ bool isButtonPressed() {
   bool upButtonState = digitalRead(upButtonPin);
   bool downButtonState = digitalRead(downButtonPin);
   return ((upButtonState == LOW) || (downButtonState == LOW));
+  //"LOW" means button is pressed
 } 
 
 void loop() {
   if (isButtonPressed()) {
     changeTargetTemp();
     hc05.write(targetTemp);
-    delay(1000);
+    delay(1000);//slows down how much clicks registered
  
   }
   lcd.setCursor(4, 1);

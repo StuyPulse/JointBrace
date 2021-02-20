@@ -22,6 +22,7 @@ void setTargetTemp() {
     
   }
 }
+
 int getTargetTemp() {
   Serial.println("getting target temp");
   return targetTemp;
@@ -51,9 +52,11 @@ void setTemperatureSwitch(bool value) {
   if (value) {
     analogWrite(heatingPin, 255); //turns heat on full power
     Serial.println("Heating Turning On...");
-    } else{
+    } else {
       analogWrite(heatingPin, 0);//turns it off
       Serial.println("Heating Turning Off");
+    }
+}
 
 void controlTemperature() {
   if (getTemperature() < getTargetTemp()) {
@@ -63,7 +66,6 @@ void controlTemperature() {
     setTemperatureSwitch(false);
     Serial.println("Reached Target Temperature");
   }
-  
 }
 
 void loop() {

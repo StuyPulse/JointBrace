@@ -34,7 +34,7 @@ void changeTargetTemp() {
 bool isButtonPressed() {
   bool upButtonState = digitalRead(upButtonPin);
   bool downButtonState = digitalRead(downButtonPin);
-  if ((upButtonState == LOW) || (downButtonState == Low)) {
+  if ((upButtonState == LOW) || (downButtonState == LOW)) {
     //"LOW" means button is pressed
     Serial.println("A button is pressed");
     return true;

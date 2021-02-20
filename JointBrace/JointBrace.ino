@@ -11,7 +11,7 @@ void setup() {
   pinMode(heatingPin, OUTPUT);
   pinMode(sensorPin, INPUT);
   
-  hc06.begin(9600);
+  hc06.begin(9600); //hc06 is the bluetooth module we use, 9600 is bytes sent
   Serial.println(" setting up");
 }
 
@@ -49,13 +49,11 @@ int getTemperature() {
 
 void setTemperatureSwitch(bool value) {
   if (value) {
-    analogWrite(heatingPin, 255);
+    analogWrite(heatingPin, 255); //turns heat on full power
     Serial.println("Heating Turning On...");
     } else{
-      analogWrite(heatingPin, 0);
+      analogWrite(heatingPin, 0);//turns it off
       Serial.println("Heating Turning Off");
-      } 
-}
 
 void controlTemperature() {
   if (getTemperature() < getTargetTemp()) {
@@ -70,5 +68,5 @@ void controlTemperature() {
 
 void loop() {
   controlTemperature();
-  delay(5000);
+  delay(5000);//delays speed temperature changes
 }

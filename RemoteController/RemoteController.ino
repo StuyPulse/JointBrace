@@ -49,7 +49,7 @@ void loop() {
     changeTargetTemp();
     hc05.write(targetTemp);
     delay(1000);//slows down how much clicks registered
-    Serial/println("Running..");
+    Serial.println("Running..");
   }
   lcd.setCursor(4, 1);
   lcd.print(targetTemp);

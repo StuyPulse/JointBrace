@@ -34,31 +34,22 @@ void changeTargetTemp() {
 bool isButtonPressed() {
   bool upButtonState = digitalRead(upButtonPin);
   bool downButtonState = digitalRead(downButtonPin);
-<<<<<<< HEAD
   if ((upButtonState == LOW) || (downButtonState == Low)) {
+    //"LOW" means button is pressed
     Serial.println("A button is pressed");
     return true;
   }
   else {
     return false;
-  }
-=======
-  return ((upButtonState == LOW) || (downButtonState == LOW));
-  //"LOW" means button is pressed
->>>>>>> Golam
+  }  
 } 
 
 void loop() {
   if (isButtonPressed()) {
     changeTargetTemp();
     hc05.write(targetTemp);
-<<<<<<< HEAD
-    delay(1000);
-    Serial/println("Running..");
-=======
     delay(1000);//slows down how much clicks registered
- 
->>>>>>> Golam
+    Serial/println("Running..");
   }
   lcd.setCursor(4, 1);
   lcd.print(targetTemp);

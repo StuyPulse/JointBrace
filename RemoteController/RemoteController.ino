@@ -19,16 +19,24 @@ void changeTargetTemp() {
   bool downButtonState = digitalRead(downButtonPin);
   if (upButtonState == LOW) {
     targetTemp++;
+    Serial.println("incrementing temperature by 1...");
   }
   else if (downButtonState == LOW) {
     targetTemp--;
+    Serial.println("decrementing temperature by 1...");
   }
 }
 
 bool isButtonPressed() {
   bool upButtonState = digitalRead(upButtonPin);
   bool downButtonState = digitalRead(downButtonPin);
-  return (upButtonState == LOW) || (downButtonState == Low));
+  if ((upButtonState == LOW) || (downButtonState == Low)) {
+    Serial.println("A button is pressed");
+    return true;
+  }
+  else {
+    return false;
+  }
 } 
 
 void loop() {
@@ -36,6 +44,7 @@ void loop() {
     changeTargetTemp();
     hc05.write(targetTemp);
     delay(1000);
+    Serial/println("Running..");
   }
   
 }

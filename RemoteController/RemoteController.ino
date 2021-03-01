@@ -1,12 +1,11 @@
 #include <SoftwareSerial.h>
-#include <LiquidCrystal.h>
+#include LiquidCrystal_I2C.h
 
-SoftwareSerial hc05(-1,-1);
-int upButtonPin = -1;
-int downButtonPin = -1;
+SoftwareSerial hc05(0, 1);
+int upButtonPin = 5;
+int downButtonPin = 6;
 
-const int rs = -1, en = -1, d4 = -1, d5 = -1, d6 = -1, d7 = -1;
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+LiquidCrystal_I2C lcd(0x3f, 16, 2);
 
 int targetTemp = 70;
 
@@ -14,7 +13,7 @@ void setup() {
   hc05.begin(9600);
     pinMode(upButtonPin, INPUT);
     pinMode(downButtonPin, INPUT);
-    lcd.begin(16, 2);
+    lcd.init();
 }
 
 void changeTargetTemp() {

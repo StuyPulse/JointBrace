@@ -8,6 +8,8 @@ int downButtonPin = 6;
 LiquidCrystal_I2C lcd(0x3f, 16, 2);
 
 int targetTemp = 70;
+int upButtonState = 0;
+int downButtonState = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -21,8 +23,8 @@ void setup() {
 
 void changeTargetTemp() {
 /* if up is pressed, increase*/
-  bool upButtonState = digitalRead(upButtonPin);
-  bool downButtonState = digitalRead(downButtonPin);
+  upButtonState = digitalRead(upButtonPin);
+  downButtonState = digitalRead(downButtonPin);
   if (upButtonState == LOW) {
     targetTemp++;
     Serial.println("incrementing temperature by 1...");
@@ -34,8 +36,8 @@ void changeTargetTemp() {
 }
 
 bool isButtonPressed() {
-  bool upButtonState = digitalRead(upButtonPin);
-  bool downButtonState = digitalRead(downButtonPin);
+  upButtonState = digitalRead(upButtonPin);
+  downButtonState = digitalRead(downButtonPin);
   Serial.println(upButtonState);
   Serial.println(downButtonState);
   if ((upButtonState == LOW) || (downButtonState == LOW)) {

@@ -10,10 +10,13 @@ LiquidCrystal_I2C lcd(0x3f, 16, 2);
 int targetTemp = 70;
 
 void setup() {
+  Serial.begin(9600);
   hc05.begin(9600);
-    pinMode(upButtonPin, INPUT);
-    pinMode(downButtonPin, INPUT);
-    lcd.init();
+  pinMode(upButtonPin, INPUT);
+  pinMode(downButtonPin, INPUT);
+  lcd.init();
+  lcd.backlight();
+  lcd.print("Hi");
 }
 
 void changeTargetTemp() {
@@ -33,6 +36,8 @@ void changeTargetTemp() {
 bool isButtonPressed() {
   bool upButtonState = digitalRead(upButtonPin);
   bool downButtonState = digitalRead(downButtonPin);
+  Serial.println(upButtonState);
+  Serial.println(downButtonState);
   if ((upButtonState == LOW) || (downButtonState == LOW)) {
     //"LOW" means button is pressed
     Serial.println("A button is pressed");
@@ -48,9 +53,7 @@ void loop() {
     changeTargetTemp();
     hc05.write(targetTemp);
     delay(1000);//slows down how much clicks registered
-    Serial.println("button is presseddd..");
   }
   lcd.setCursor(4, 1);
   lcd.print(targetTemp);
-  Serial.println("loop running");
 }

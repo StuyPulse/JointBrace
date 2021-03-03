@@ -5,7 +5,7 @@ SoftwareSerial hc05(0, 1);
 int upButtonPin = 5;
 int downButtonPin = 6;
 
-LiquidCrystal_I2C lcd(0x3f, 16, 2);
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 int targetTemp = 70;
 int upButtonState = 0;
@@ -18,7 +18,9 @@ void setup() {
   pinMode(downButtonPin, INPUT);
   lcd.init();
   lcd.backlight();
-  lcd.print("Hi");
+  lcd.setCursor(0, 0);
+  lcd.print("Please work");
+  lcd.setCursor(4,1);
 }
 
 void changeTargetTemp() {

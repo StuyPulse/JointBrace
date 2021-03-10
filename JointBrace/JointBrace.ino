@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 
-SoftwareSerial hc06(-1,-1);
+SoftwareSerial hc06(0,1);
 
 int sensorPin = -1;
 int heatingPin = -1;

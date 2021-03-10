@@ -69,6 +69,7 @@ void controlTemperature() {
 }
 
 void loop() {
-  controlTemperature();
-  delay(5000);//delays speed temperature changes
+  //controlTemperature();
+  //delay(5000);//delays speed temperature changes
+  getTemperature();
 }

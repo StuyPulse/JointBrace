@@ -16,6 +16,7 @@ void setup() {
 }
 
 void setTargetTemp() {
+  Serial.println("checking for hc06");
   if (hc06.available()){
     targetTemp = hc06.read();
     Serial.println('reading temp');

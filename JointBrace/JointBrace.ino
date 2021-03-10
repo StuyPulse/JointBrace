@@ -19,7 +19,7 @@ void setTargetTemp() {
   if (hc06.available()){
     targetTemp = hc06.read();
     Serial.println('reading temp');
-    
+    Serial.println(targetTemp);
   }
 }
 
@@ -71,5 +71,5 @@ void controlTemperature() {
 void loop() {
   //controlTemperature();
   //delay(5000);//delays speed temperature changes
-  getTemperature();
+  setTargetTemperature();
 }

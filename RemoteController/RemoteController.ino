@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 #include <LiquidCrystal_I2C.h>
 
-SoftwareSerial hc05(0, 1);
+SoftwareSerial hc05(2, 3);
 int upButtonPin = 5;
 int downButtonPin = 6;
 

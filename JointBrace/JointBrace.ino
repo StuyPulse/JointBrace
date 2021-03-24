@@ -2,8 +2,8 @@
 
 SoftwareSerial hc06(2,3);
 
-int sensorPin = -1;
-int heatingPin = -1;
+int sensorPin = 1;
+int heatingPin = 11;
 int targetTemp = 70;
 
 void setup() {
@@ -72,5 +72,9 @@ void controlTemperature() {
 void loop() {
   //controlTemperature();
   //delay(5000);//delays speed temperature changes
-  setTargetTemp();
+  //setTargetTemp();
+  setTemperatureSwitch(true);
+  delay(5000);
+  setTemperatureSwitch(false);
+  delay(5000); 
 }

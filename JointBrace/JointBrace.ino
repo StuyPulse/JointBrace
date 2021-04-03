@@ -37,7 +37,7 @@ int getTemperature() {
      voltage /= 1024.0; 
  
       // print out the voltage
-    Serial.println(voltage); Serial.println(" volts");
+    //Serial.println(voltage); Serial.println(" volts");
  
       // now print out the temperature
      float temperatureC = (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
@@ -70,11 +70,7 @@ void controlTemperature() {
 }
 
 void loop() {
-  //controlTemperature();
-  //delay(5000);//delays speed temperature changes
-  //setTargetTemp();
-  setTemperatureSwitch(true);
-  delay(5000);
-  setTemperatureSwitch(false);
-  delay(5000); 
+  controlTemperature();
+  delay(5000);//delays speed temperature changes
+  setTargetTemp(); 
 }
